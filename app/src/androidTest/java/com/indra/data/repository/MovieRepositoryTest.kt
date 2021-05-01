@@ -1,6 +1,7 @@
 package com.indra.data.repository
 
-import com.indra.appComponent
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.indra.data.datasource.local.MovieLocalDataSource
 import com.indra.domain.repository.MovieRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
@@ -11,13 +12,10 @@ import org.koin.test.inject
 
 class MovieRepositoryTest: KoinTest {
 
-    private val repository by inject<MovieRepository>()
+    private val repository: MovieRepository by inject()
 
     @get:Rule
-    val koinTestRule = KoinTestRule.create {
-        printLogger()
-        modules(appComponent)
-    }
+    val rule = InstantTaskExecutorRule()
 
     @Test
     fun checkMovies() {

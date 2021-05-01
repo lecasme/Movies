@@ -9,8 +9,7 @@ import com.indra.presentation.utils.toListedMovies
 import com.indra.presentation.utils.toListedVideos
 
 class MovieRepositoryImpl(private val movieRemoteDataSource: MovieRemoteDataSource,
-                          private val movieLocalDataSource: MovieLocalDataSource
-): MovieRepository {
+                          private val movieLocalDataSource: MovieLocalDataSource): MovieRepository {
 
     override suspend fun fetchMovies(list: Int) {
         val response = movieRemoteDataSource.fetchMovies(list)
