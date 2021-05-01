@@ -1,5 +1,5 @@
 
-![Logo](https://raw.githubusercontent.com/lecasme/RappiTV/master/app/screenshots/logo.png?raw=true)
+![Logo](https://raw.githubusercontent.com/lecasme/Movies/master/app/screenshots/logo.png?raw=true)
 
 Clean Architecture + MVVM + Live Data + View Binding + Koin + Room + Retrofit 
 
