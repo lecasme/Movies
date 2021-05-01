@@ -9,11 +9,13 @@ import com.indra.data.datasource.remote.MovieRemoteDataSourceImpl
 import com.indra.data.datasource.remote.service.MovieService
 import com.indra.data.repository.MovieRepositoryImpl
 import com.indra.domain.repository.MovieRepository
+import com.indra.presentation.features.splash.SplashViewModel
 import com.indra.presentation.utils.Connectivity
 import com.tmdb.tv.data.service.MovieInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -23,11 +25,16 @@ import java.util.concurrent.TimeUnit
 
 val appComponent = listOf(
     createService("https://api.themoviedb.org/3/"),
+    createViewModels(),
     createDataBase(),
     createRepositories(),
     createDataSources(),
     createUtils()
 )
+
+fun createViewModels() = module{
+    viewModel { SplashViewModel(get()) }
+}
 
 fun createRepositories() = module{
     factory { MovieRepositoryImpl(get(), get()) as MovieRepository }

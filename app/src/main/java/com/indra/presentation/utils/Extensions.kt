@@ -1,6 +1,11 @@
 package com.indra.presentation.utils
 import android.util.Log
 import android.view.View
+import android.view.Window
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import com.google.android.material.snackbar.Snackbar
 import com.indra.data.entity.MovieEntity
 import com.indra.data.entity.VideoEntity
 import com.indra.domain.models.Movie
@@ -55,32 +60,27 @@ fun View.setOnSafeClickListener(onSafeClick: (View) -> Unit) {
     })
 }
 
-fun View.setOnSafeClickListener(interval: Int, onSafeClick: (View) -> Unit) {
-    setOnClickListener(SafeClickListener(interval) { v ->
-        onSafeClick(v)
+fun Window.getSoftInputMode(): Int {
+    return attributes.softInputMode
+}
+
+fun Fragment.showSnackbar(snackbarText: String, timeLength: Int) {
+    activity?.let {
+        Snackbar.make(it.findViewById(android.R.id.content), snackbarText, timeLength).show()
+    }
+}
+
+/**
+ * SetUps
+ */
+fun Fragment.setupSnackbar(
+    lifecycleOwner: LifecycleOwner,
+    snackbarEvent: LiveData<Event<Int>>,
+    timeLength: Int
+) {
+    snackbarEvent.observe(lifecycleOwner, { event ->
+        event.getContentIfNotHandled()?.let { res ->
+            context?.let { showSnackbar(it.getString(res), timeLength) }
+        }
     })
-}
-
-fun String.dateFormat(): String {
-
-    var newDate = this
-
-    try {
-        val formatOriginal = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-        val formatRenewed = SimpleDateFormat("MMM dd, yyyy", Locale.US)
-        val date = formatOriginal.parse(this)
-        newDate = formatRenewed.format(date).toString()
-    }
-    catch (e: Exception) {
-        Log.e("Date Converter", "This date string can`t be formated")
-    }
-    finally {
-       return newDate
-    }
-
-}
-
-fun String.toDate(): Date? {
-    val formatOriginal = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-    return formatOriginal.parse(this)
 }
