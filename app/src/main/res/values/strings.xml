@@ -2,4 +2,7 @@
     <string name="app_name">Movies</string>
     <string name="error">Sucedio un error inesperado intentelo mas tarde</string>
     <string name="connectivity">No se encontro conexion a internet</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_error">Usuario o contraseña incorrectos</string>
+
 </resources>

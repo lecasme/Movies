@@ -7,8 +7,11 @@ import com.indra.data.datasource.local.database.AppDataBase
 import com.indra.data.datasource.remote.MovieRemoteDataSource
 import com.indra.data.datasource.remote.MovieRemoteDataSourceImpl
 import com.indra.data.datasource.remote.service.MovieService
+import com.indra.data.repository.LoginRepositoryImpl
 import com.indra.data.repository.MovieRepositoryImpl
+import com.indra.domain.repository.LoginRepository
 import com.indra.domain.repository.MovieRepository
+import com.indra.domain.usecases.LoginUseCase
 import com.indra.domain.usecases.MovieUseCase
 import com.indra.presentation.features.splash.SplashViewModel
 import com.indra.presentation.utils.Connectivity
@@ -40,10 +43,12 @@ fun createViewModels() = module{
 
 fun createRepositories() = module{
     factory { MovieRepositoryImpl(get(), get()) as MovieRepository }
+    factory { LoginRepositoryImpl() as LoginRepository }
 }
 
 fun createUseCases() = module{
     factory { MovieUseCase(get(), get()) }
+    factory { LoginUseCase(get()) }
 }
 
 fun createDataSources() = module{
