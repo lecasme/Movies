@@ -22,8 +22,8 @@ class MovieRepositoryImpl(private val movieRemoteDataSource: MovieRemoteDataSour
     }
 
     // Local
-    override suspend fun getMovies(): List<Movie> {
-        return movieLocalDataSource.selectMovies().toListedMovies()
+    override suspend fun getMovies(): List<Movie>? {
+        return movieLocalDataSource.selectMovies()?.toListedMovies()
     }
 
 }

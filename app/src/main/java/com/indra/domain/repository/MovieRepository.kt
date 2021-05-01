@@ -11,6 +11,6 @@ interface MovieRepository {
     suspend fun fetchVideos(movieId: Int): List<Video>
 
     // Local
-    suspend fun getMovies(): List<Movie>
+    suspend fun getMovies(): List<Movie>?
 
 }

@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 interface MovieLocalDataSource {
-    suspend fun selectMovies(): List<MovieEntity>
+    suspend fun selectMovies(): List<MovieEntity>?
     suspend fun insertMovies(movies : List<MovieEntity>)
 }
 
@@ -16,7 +16,7 @@ class MovieLocalDataSourceImpl(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MovieLocalDataSource {
 
-    override suspend fun selectMovies(): List<MovieEntity> = withContext(ioDispatcher) {
+    override suspend fun selectMovies(): List<MovieEntity>? = withContext(ioDispatcher) {
         moviesDao.selectMovies()
     }
 

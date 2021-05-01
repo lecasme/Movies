@@ -20,14 +20,8 @@ class HomeViewModel(private val movieUseCase: MovieUseCase) : BaseViewModel() {
     }
 
     private fun getMovies() = viewModelScope.launch {
-        when(val result =  movieUseCase.getMovies()){
-            is Result.Success -> {
-               result.data.let { movies.postValue(it) }
-            }
-            is Result.Error -> _snackBar.value = Event(R.string.error)
-            is Result.Disconected -> {
-                _snackBar.value = Event(R.string.connectivity)
-            }
+        movieUseCase.getMovies()?.let {
+            movies.postValue(it)
         }
     }
 

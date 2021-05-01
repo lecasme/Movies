@@ -6,6 +6,7 @@ import com.indra.R
 import com.indra.domain.usecases.MovieUseCase
 import kotlinx.coroutines.launch
 import com.indra.domain.models.Result
+import com.indra.domain.models.User
 import com.indra.domain.usecases.UserUseCase
 import com.indra.presentation.commons.BaseViewModel
 import com.indra.presentation.utils.Event
@@ -20,18 +21,31 @@ class SplashViewModel(private val movieUseCase: MovieUseCase, private val userUs
     }
 
     private fun getMovies() = viewModelScope.launch {
+
+        val user = userUseCase.getUser()
+
         when(movieUseCase.fetchMovies(1)){
             is Result.Success -> {
-                userUseCase.getUser()?.let {
-                    status.postValue(true)
-                } ?: kotlin.run {
-                    status.postValue(false)
-                }
+                sendValue(user)
             }
             is Result.Error -> _snackBar.value = Event(R.string.error)
             is Result.Disconected -> {
-                _snackBar.value = Event(R.string.connectivity)
+
+                if(movieUseCase.getMovies()?.isEmpty() == false){
+                    sendValue(user)
+                }else{
+                    _snackBar.value = Event(R.string.connectivity)
+                }
+
             }
+        }
+    }
+
+    private fun sendValue(user: User?){
+        user?.let {
+            status.postValue(true)
+        } ?: kotlin.run {
+            status.postValue(false)
         }
     }
 

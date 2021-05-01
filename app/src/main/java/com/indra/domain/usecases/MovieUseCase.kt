@@ -26,28 +26,8 @@ class MovieUseCase(
         }
     }
 
-    suspend fun getMovies(): Result<List<Movie>> {
-        return if(connectivity.isOnline()){
-            try {
-                Result.Success(movieRepository.getMovies())
-            }catch (e: Exception){
-                Result.Error(e)
-            }
-        }else{
-            Result.Disconected
-        }
-    }
-
-    suspend fun fetchVideos(movieId: Int): Result<List<Video>> {
-        return if(connectivity.isOnline()){
-            try {
-                Result.Success(movieRepository.fetchVideos(movieId))
-            }catch (e: Exception){
-                Result.Error(e)
-            }
-        }else{
-            Result.Disconected
-        }
+    suspend fun getMovies(): List<Movie>? {
+        return movieRepository.getMovies()
     }
 
 }

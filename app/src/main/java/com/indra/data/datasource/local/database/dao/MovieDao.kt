@@ -10,7 +10,7 @@ import com.indra.data.entity.MovieEntity
 abstract class MoviesDao : BaseDao<MovieEntity> {
 
     @Query("SELECT * FROM movie")
-    abstract suspend fun selectMovies(): List<MovieEntity>
+    abstract suspend fun selectMovies(): List<MovieEntity>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertMovies(obj: List<MovieEntity>)
