@@ -15,7 +15,7 @@ import com.indra.presentation.utils.API_IMG_URL
 import com.indra.presentation.utils.dateFormat
 import com.indra.presentation.utils.setOnSafeClickListener
 
-class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(private val movies: List<Movie>, private val listener: Listener) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     lateinit var context: Context
 
@@ -49,7 +49,7 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
             .into(viewHolder.imageView)
 
         viewHolder.card.setOnSafeClickListener {
-
+            listener.showDetails(movie)
         }
 
         viewHolder.textTitle.text = movie.originalTitle
@@ -58,5 +58,9 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
     }
 
     override fun getItemCount() = movies.size
+
+    interface Listener {
+        fun showDetails(movie: Movie)
+    }
 
 }

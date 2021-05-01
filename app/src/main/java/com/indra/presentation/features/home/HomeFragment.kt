@@ -4,14 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.indra.databinding.FragmentHomeBinding
+import com.indra.domain.models.Movie
 import com.indra.presentation.commons.BaseFragment
 import com.indra.presentation.commons.BaseViewModel
 import com.indra.presentation.features.home.adapter.MovieAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(), MovieAdapter.Listener {
 
     private val viewModel: HomeViewModel by viewModel()
     lateinit var binding: FragmentHomeBinding
@@ -26,7 +28,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.movies.observe(viewLifecycleOwner, {
-            movieAdapter = MovieAdapter(it)
+            movieAdapter = MovieAdapter(it, this)
             binding.rcvMovies.apply {
                 layoutManager = GridLayoutManager(context, 3)
                 adapter = movieAdapter
@@ -37,4 +39,7 @@ class HomeFragment : BaseFragment() {
 
     override fun getViewModel(): BaseViewModel = viewModel
 
+    override fun showDetails(movie: Movie) {
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie))
+    }
 }

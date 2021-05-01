@@ -8,5 +8,8 @@
     <string name="username">admin</string>
     <string name="password">password*123</string>
     <string name="login">Iniciar Sesion</string>
+    <string name="landing_suitable">Suitable for all ages</string>
+    <string name="landing_no_suitable">Ages 18+</string>
+    <string name="landing_votes">votes</string>
 
 </resources>

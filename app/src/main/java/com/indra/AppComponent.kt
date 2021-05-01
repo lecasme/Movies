@@ -18,6 +18,7 @@ import com.indra.domain.repository.UserRepository
 import com.indra.domain.usecases.LoginUseCase
 import com.indra.domain.usecases.MovieUseCase
 import com.indra.domain.usecases.UserUseCase
+import com.indra.presentation.features.details.DetailsViewModel
 import com.indra.presentation.features.home.HomeViewModel
 import com.indra.presentation.features.login.LoginViewModel
 import com.indra.presentation.features.splash.SplashViewModel
@@ -48,6 +49,7 @@ fun createViewModels() = module{
     viewModel { SplashViewModel(get(), get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { HomeViewModel(get()) }
+    viewModel { DetailsViewModel() }
 }
 
 fun createRepositories() = module{

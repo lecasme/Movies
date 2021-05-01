@@ -1,7 +1,9 @@
 package com.indra.domain.models
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 class Movie(val id: Int,
           val originalTitle: String,
           val posterPath: String,
@@ -12,6 +14,6 @@ class Movie(val id: Int,
           val backdropPath: String,
           val overview: String,
           val adult: Boolean,
-          val originalLanguage: String) : Serializable
+          val originalLanguage: String) : Parcelable
 
 
