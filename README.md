@@ -20,6 +20,7 @@ Referencias a las librerias usadas en este proyecto:
 - Mostrar resultados de las películas con paginación (20 ítems por página)
 - Animaciones y transiciones entre vistas
 - Coverage completo (faltan pruebas unitarias)
+- Modularizar las capas
 
 ## Screenshots
 
