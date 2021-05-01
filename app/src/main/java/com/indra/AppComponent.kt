@@ -13,6 +13,7 @@ import com.indra.domain.repository.LoginRepository
 import com.indra.domain.repository.MovieRepository
 import com.indra.domain.usecases.LoginUseCase
 import com.indra.domain.usecases.MovieUseCase
+import com.indra.presentation.features.login.LoginViewModel
 import com.indra.presentation.features.splash.SplashViewModel
 import com.indra.presentation.utils.Connectivity
 import com.tmdb.tv.data.service.MovieInterceptor
@@ -39,6 +40,7 @@ val appComponent = listOf(
 
 fun createViewModels() = module{
     viewModel { SplashViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
 }
 
 fun createRepositories() = module{

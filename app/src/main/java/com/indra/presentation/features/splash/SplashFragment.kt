@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.indra.databinding.FragmentSplashBinding
 import com.indra.presentation.commons.BaseFragment
 import com.indra.presentation.commons.BaseViewModel
@@ -21,6 +22,11 @@ class SplashFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.status.observe(viewLifecycleOwner, {
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+        })
+
     }
 
     override fun getViewModel(): BaseViewModel = viewModel

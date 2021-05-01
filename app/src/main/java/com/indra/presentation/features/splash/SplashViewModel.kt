@@ -12,15 +12,16 @@ import com.indra.presentation.utils.Event
 
 class SplashViewModel(private val movieUseCase: MovieUseCase) : BaseViewModel() {
 
-    private val status = MediatorLiveData<Boolean>()
+    val status = MediatorLiveData<Boolean>()
 
     init {
         getMovies()
     }
+
     private fun getMovies() = viewModelScope.launch {
         when(val result =  movieUseCase.fetchMovies(1)){
             is Result.Success -> {
-
+                status.postValue(true)
             }
             is Result.Error -> _snackBar.value = Event(R.string.error)
             is Result.Disconected -> {

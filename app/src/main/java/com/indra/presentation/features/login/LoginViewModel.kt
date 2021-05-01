@@ -11,18 +11,16 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel (private val loginUseCase: LoginUseCase) : BaseViewModel() {
 
-    private val status = MediatorLiveData<Boolean>()
+    val status = MediatorLiveData<Boolean>()
 
-    private fun login(username: String, password: String) = viewModelScope.launch {
+    fun login(username: String, password: String) = viewModelScope.launch {
         when(val result =  loginUseCase.login(username, password)){
             is Result.Success -> {
-
                 if(!result.data){
                     _snackBar.value = Event(R.string.login_error)
                 }else{
-
+                    status.postValue(true)
                 }
-
             }
             is Result.Error -> _snackBar.value = Event(R.string.error)
             is Result.Disconected -> {
