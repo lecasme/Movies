@@ -7,8 +7,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.google.android.material.snackbar.Snackbar
 import com.indra.data.entity.MovieEntity
+import com.indra.data.entity.UserEntity
 import com.indra.data.entity.VideoEntity
 import com.indra.domain.models.Movie
+import com.indra.domain.models.User
 import com.indra.domain.models.Video
 import com.tmdb.tv.domain.utils.SafeClickListener
 import java.lang.Exception
@@ -38,6 +40,13 @@ fun VideoEntity.toModel(): Video {
         this.name,
         this.site,
         this.type
+    )
+}
+
+fun UserEntity.toModel(): User {
+    return User(
+        this.id,
+        this.username
     )
 }
 

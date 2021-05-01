@@ -37,7 +37,7 @@ class LoginFragment : BaseFragment() {
         }
 
         viewModel.status.observe(viewLifecycleOwner,{
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+           findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
         })
 
     }

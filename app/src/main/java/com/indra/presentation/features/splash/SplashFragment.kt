@@ -24,7 +24,11 @@ class SplashFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.status.observe(viewLifecycleOwner, {
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            if(it){
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
+            }else{
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            }
         })
 
     }
