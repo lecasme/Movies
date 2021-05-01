@@ -59,7 +59,6 @@ class DetailsFragment : BaseFragment() {
 
         }
 
-
     }
 
     override fun getViewModel(): BaseViewModel = viewModel
