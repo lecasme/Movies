@@ -1,11 +1,10 @@
 package com.indra.presentation.utils
 import android.util.Log
 import android.view.View
-import com.google.gson.annotations.SerializedName
 import com.indra.data.entity.MovieEntity
 import com.indra.data.entity.VideoEntity
-import com.indra.domain.domain.Movie
-import com.indra.domain.domain.Video
+import com.indra.domain.models.Movie
+import com.indra.domain.models.Video
 import com.tmdb.tv.domain.utils.SafeClickListener
 import java.lang.Exception
 import java.text.SimpleDateFormat

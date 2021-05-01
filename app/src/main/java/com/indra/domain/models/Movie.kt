@@ -1,4 +1,4 @@
-package com.indra.domain.domain
+package com.indra.domain.models
 
 import java.io.Serializable
 

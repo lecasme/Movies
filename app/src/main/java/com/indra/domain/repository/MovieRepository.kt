@@ -1,7 +1,7 @@
 package com.indra.domain.repository
 
-import com.indra.domain.domain.Movie
-import com.indra.domain.domain.Video
+import com.indra.domain.models.Movie
+import com.indra.domain.models.Video
 
 
 interface MovieRepository {
