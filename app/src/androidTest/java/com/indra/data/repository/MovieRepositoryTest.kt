@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.indra.data.datasource.local.MovieLocalDataSource
 import com.indra.domain.repository.MovieRepository
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.koin.test.KoinTest

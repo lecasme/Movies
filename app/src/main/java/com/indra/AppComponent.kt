@@ -9,6 +9,7 @@ import com.indra.data.datasource.remote.MovieRemoteDataSourceImpl
 import com.indra.data.datasource.remote.service.MovieService
 import com.indra.data.repository.MovieRepositoryImpl
 import com.indra.domain.repository.MovieRepository
+import com.indra.domain.usecases.MovieUseCase
 import com.indra.presentation.features.splash.SplashViewModel
 import com.indra.presentation.utils.Connectivity
 import com.tmdb.tv.data.service.MovieInterceptor
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit
 val appComponent = listOf(
     createService("https://api.themoviedb.org/3/"),
     createViewModels(),
+    createUseCases(),
     createDataBase(),
     createRepositories(),
     createDataSources(),
@@ -38,6 +40,10 @@ fun createViewModels() = module{
 
 fun createRepositories() = module{
     factory { MovieRepositoryImpl(get(), get()) as MovieRepository }
+}
+
+fun createUseCases() = module{
+    factory { MovieUseCase(get(), get()) }
 }
 
 fun createDataSources() = module{
@@ -81,4 +87,5 @@ fun createService(baseUrl: String) = module {
     }
 
     factory { get<Retrofit>().create(MovieService::class.java) }
+
 }
