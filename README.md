@@ -23,8 +23,8 @@ Referencias a las librerias usadas en este proyecto:
 
 ## Screenshots
 
-![Login](https://raw.githubusercontent.com/lecasme/RappiTV/master/app/screenshots/login.png?raw=true)
-![Home](https://raw.githubusercontent.com/lecasme/RappiTV/master/app/screenshots/home.png?raw=true)
-![Detail](https://raw.githubusercontent.com/lecasme/RappiTV/master/app/screenshots/detail.png?raw=true)
+![Login](https://raw.githubusercontent.com/lecasme/Movies/master/app/screenshots/login.png?raw=true)
+![Home](https://raw.githubusercontent.com/lecasme/Movies/master/app/screenshots/home.png?raw=true)
+![Detail](https://raw.githubusercontent.com/lecasme/Movies/master/app/screenshots/details.png?raw=true)
 
 
