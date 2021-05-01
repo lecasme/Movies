@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.indra.databinding.FragmentLoginBinding
 import com.indra.presentation.commons.BaseFragment
 import com.indra.presentation.commons.BaseViewModel
@@ -36,7 +37,7 @@ class LoginFragment : BaseFragment() {
         }
 
         viewModel.status.observe(viewLifecycleOwner,{
-
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
         })
 
     }

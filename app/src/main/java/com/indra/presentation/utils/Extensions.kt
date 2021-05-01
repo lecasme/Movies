@@ -84,3 +84,22 @@ fun Fragment.setupSnackbar(
         }
     })
 }
+
+fun String.dateFormat(): String {
+
+    var newDate = this
+
+    try {
+        val formatOriginal = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        val formatRenewed = SimpleDateFormat("MMM dd, yyyy", Locale.US)
+        val date = formatOriginal.parse(this)
+        newDate = formatRenewed.format(date).toString()
+    }
+    catch (e: Exception) {
+        Log.e("Date Converter", "This date string can`t be formated")
+    }
+    finally {
+        return newDate
+    }
+
+}
